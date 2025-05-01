@@ -193,6 +193,7 @@ HookResult HookGlobals::setupHooking() {
     // try to obtain handle of already loaded library
     if (!mHandle) {
         mHandle = dlopen(mLibrary.c_str(), RTLD_NOLOAD);
+        LOGD("dlopen(%s, RTLD_NOLOAD): %s", mLibrary.c_str(), dlerror());
         LOG_ASSERT_S(mHandle, return HookResult::ERROR_FATAL, "Could not obtain library handle");
     }
 
